@@ -1,0 +1,13 @@
+.brickinfo {
+ width: 100%;
+ border: 0px;
+ padding: 0px;
+ overflow: hidden;
+ margin: 0;
+}
+
+.brickinfo img {
+ margin-right: 5px;
+ float: left;
+}
+

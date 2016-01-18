@@ -9,7 +9,7 @@ function bi_create_menu() {
 
 function bi_add_settings_link($links, $file) {
  if ( $file == plugin_basename(dirname(__FILE__) . '/brickinfo.php')) {
-  $in = '<a href="admin.php?page=brickinfo/bi-options.php">Settings</a>';
+  $in = '<a href="admin.php?page='.dirname(__FILE__).'/bi-options.php">Settings</a>';
   array_unshift($links, $in);
  }
  return $links;

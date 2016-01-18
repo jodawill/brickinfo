@@ -62,7 +62,7 @@ function bi_get_part($part_number) {
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img title="'.$part_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?S='.$part_number.'">'.$part_number.'</a> '.$part_name.'</strong></div><hr/>';
+          <img title="'.$part_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?P='.$part_number.'">'.$part_number.'</a> '.$part_name.'</strong></div><hr/>';
  return $ret;
 }
 
@@ -87,7 +87,7 @@ function bi_get_gear($gear_number) {
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img width="80" height="60" title="'.$gear_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?S='.$gear_number.'">'.$gear_number.'</a> '.$gear_name.'</strong></div><hr/>';
+          <img width="80" height="60" title="'.$gear_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?G='.$gear_number.'">'.$gear_number.'</a> '.$gear_name.'</strong></div><hr/>';
  return $ret;
 }
 
@@ -114,7 +114,7 @@ function bi_get_minifig($minifig_number) {
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img title="'.$set_info.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?S='.$minifig_number.'">'.$minifig_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$minifig_number.'">Inv</a>) '.$set_info.'</strong><br>Released in '.$year_released.'
+          <img title="'.$set_info.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?M='.$minifig_number.'">'.$minifig_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$minifig_number.'">Inv</a>) '.$set_info.'</strong><br>Released in '.$year_released.'
          <br/><hr/></div>';
  return $ret;
 }

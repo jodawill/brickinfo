@@ -131,7 +131,7 @@ function bi_get_feedback($username) {
  $good = $data -> PRAISE;
  $neutral = $data -> NEUTRAL;
  $bad = $data -> COMPLAINT;
- if (get_option('bi_show_fb_details') == "on") {
+ if (get_option('bi_show_fb_details', 'on') == "on") {
   $good = "<font style='color:#009900'>$good</font>";
   $neutral = "<font style='color:#999999'>$neutral</font>";
   $bad = "<font style='color:#990000'>$bad</font>";

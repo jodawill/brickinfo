@@ -1,9 +1,9 @@
 <?php
 define('URL_API', 'https://api.bricklink.com/api/store/v1');
-define("CONSUMER_SECRET", get_option('bi_consumer_secret'));
-define("CONSUMER_KEY", get_option('bi_consumer_key'));
-define("TOKEN", get_option('bi_token'));
-define("TOKEN_SECRET", get_option('bi_token_secret'));
+define("CONSUMER_SECRET", get_option('bi_consumer_secret', ''));
+define("CONSUMER_KEY", get_option('bi_consumer_key', ''));
+define("TOKEN", get_option('bi_token'), '');
+define("TOKEN_SECRET", get_option('bi_token_secret', ''));
 
 function bi_get_request($request) {
  if (!bi_are_options_set()) {
@@ -32,7 +32,7 @@ function bi_find_cache($request) {
   $date = $row -> date;
 
   # Delete item from database if cache has expired
-  if (intval(strtotime($date)) < intval(current_time('U')) - 3600*intval(get_option('bi_cache_time'))) {
+  if (intval(strtotime($date)) < intval(current_time('U')) - 3600*intval(get_option('bi_cache_time', '24'))) {
    $wpdb -> delete($table_name, array('ID' => ($row -> id)));
    $ret = '';
   }

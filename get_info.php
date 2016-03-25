@@ -21,22 +21,31 @@ function bi_get_set($set_number) {
  if ($result == "BAD_CONFIG") return bi_bad_config();
  if ($result == "TIMESTAMP_REUSED") return bi_timestamp_reused();
 
- if (!strpos($result, 'name') !== false) {
-  return bi_dne();
- }
-
  # Convert JSON into meaningful data
  $result = json_decode($result);
  $data = $result -> data;
 
- $name = $data -> name;
- $thumb_url = $data -> thumbnail_url;
- $set_info = $name;
- $year_released = $data -> year_released;
+ if (isset($data -> thumbnail_url)) {
+  $thumb_url = $data -> thumbnail_url;
+ } else {
+  $thumb_url = 'http://static.bricklink.com/clone/img/no_image.png';
+ }
+
+ if (isset($data -> name)) {
+  $name = $data -> name;
+ } else {
+  $name = 'Unknown Set';
+ }
+
+ if (isset($data -> year_released)) {
+  $year_released = $data -> year_released;
+ } else {
+  $year_released = '????';
+ }
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img title="'.$set_info.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?S='.$set_number.'">'.$set_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$set_number.'">Inv</a>) '.$set_info.'</strong><br>Released in '.$year_released.'
+          <img title="'.$name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?S='.$set_number.'">'.$set_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$set_number.'">Inv</a>) '.$name.'</strong><br>Released in '.$year_released.'
          <br/><hr/></div>';
  return $ret;
 }
@@ -49,20 +58,28 @@ function bi_get_part($part_number) {
  if ($result == "BAD_CONFIG") return bi_bad_config();
  if ($result == "TIMESTAMP_REUSED") return bi_timestamp_reused();
 
- if (!strpos($result, 'name') !== false) {
-  return bi_dne();
- }
-
- # Convert JSON into meaningful data
  $result = json_decode($result);
  $data = $result -> data;
- $part_name = $data -> name;
- $thumb_url = $data -> thumbnail_url;
- $year_released = $data -> year_released;
+ # Convert JSON into meaningful data
+ if (isset($data -> thumbnail_url)) {
+  $thumb_url = $data -> thumbnail_url;
+ } else {
+  $thumb_url = 'http://static.bricklink.com/clone/img/no_image.png';
+ }
+ if (isset($data -> name)) {
+  $part_name = $data -> name;
+ } else {
+  $part_name = 'Unknown Part';
+ }
+ if (isset($data -> year_released)) {
+  $year_released = $data -> year_released;
+ } else {
+  $year_released = '????';
+ }
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img title="'.$part_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?P='.$part_number.'">'.$part_number.'</a> '.$part_name.'</strong></div><hr/>';
+          <img title="'.$part_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?P='.$part_number.'">'.$part_number.'</a> '.$part_name."</strong><br/>Released in $year_released</div><hr/>";
  return $ret;
 }
 
@@ -74,20 +91,31 @@ function bi_get_gear($gear_number) {
  if ($result == "BAD_CONFIG") return bi_bad_config();
  if ($result == "TIMESTAMP_REUSED") return bi_timestamp_reused();
 
- if (!strpos($result, 'name') !== false) {
-  return bi_dne();
- }
-
  # Convert JSON into meaningful data
  $result = json_decode($result);
  $data = $result -> data;
- $gear_name = $data -> name;
- $thumb_url = $data -> image_url; # API is broken; thumbnail URL for gear is 404
- $year_released = $data -> year_released;
+
+ if (isset($data -> name)) {
+  $gear_name = $data -> name;
+ } else {
+  $gear_name = 'Unknown gear';
+ }
+
+ if (isset($data -> image_url)) {
+  $thumb_url = $data -> image_url; # API is broken; thumbnail URL for gear is 404
+ } else {
+  $thumb_url = 'http://static.bricklink.com/clone/img/no_image.png';
+ }
+
+ if (isset($data -> year_released)) {
+  $year_released = $data -> year_released;
+ } else {
+  $year_released = '????';
+ }
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img width="80" height="60" title="'.$gear_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?G='.$gear_number.'">'.$gear_number.'</a> '.$gear_name.'</strong></div><hr/>';
+          <img width="80" height="60" title="'.$gear_name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?G='.$gear_number.'">'.$gear_number.'</a>'.$gear_name."</strong><br/>Released in $year_released</div><hr/>";
  return $ret;
 }
 
@@ -99,22 +127,29 @@ function bi_get_minifig($minifig_number) {
  if ($result == "BAD_CONFIG") return bi_bad_config();
  if ($result == "TIMESTAMP_REUSED") return bi_timestamp_reused();
 
- if (!strpos($result, 'name') !== false) {
-  return bi_dne();
- }
-
  # Convert JSON into meaningful data
  $result = json_decode($result);
  $data = $result -> data;
 
- $name = $data -> name;
- $thumb_url = $data -> thumbnail_url;
- $set_info = $name;
- $year_released = $data -> year_released;
+ if (isset($data -> name)) {
+  $name = $data -> name;
+ } else {
+  $name = 'Unknown Minifigure';
+ }
+ if (isset($data -> thumbnail_url)) {
+  $thumb_url = $data -> thumbnail_url;
+ } else {
+  $thumb_url = 'http://static.bricklink.com/clone/img/no_image.png';
+ }
+ if (isset($data -> year_released)) {
+  $year_released = $data -> year_released;
+ } else {
+  $year_released = '????';
+ }
 
  # Create pretty display of set information
  $ret = '<div class="brickinfo">
-          <img title="'.$set_info.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?M='.$minifig_number.'">'.$minifig_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$minifig_number.'">Inv</a>) '.$set_info.'</strong><br>Released in '.$year_released.'
+          <img title="'.$name.'" src="'.$thumb_url.'"><strong><a style="font-weight:bold" href="http://alpha.bricklink.com/pages/clone/catalogitem.page?M='.$minifig_number.'">'.$minifig_number.'</a> (<a style="font-weight:bold" href="http://www.bricklink.com/catalogItemInv.asp?S='.$minifig_number.'">Inv</a>) '.$name.'</strong><br>Released in '.$year_released.'
          <br/><hr/></div>';
  return $ret;
 }

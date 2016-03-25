@@ -3,7 +3,7 @@
 * Plugin Name: BrickInfo
 * Plugin URI: https://github.com/jodawill/brickinfo
 * Description: Adds BrickLink feedback and BL forum-style item links to your BBPress forum.
-* Version: 0.02
+* Version: 1.00
 * Author: Josh Williams
 * Author http://jodawill.com
 * License: GPL2

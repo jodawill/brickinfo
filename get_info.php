@@ -9,10 +9,6 @@ function bi_timestamp_reused() {
  return '<div class="brickinfo"><strong>BrickInfo Error:</strong> Timestamp reused. Reload page to try again.';
 }
 
-function bi_dne() {
- return '<div><strong>BrickInfo Error:</strong> Item does not exist</div>';
-}
-
 function bi_get_set($set_number) {
  # Get JSON data from BrickLink API
  $request='/items/set/'.$set_number;
